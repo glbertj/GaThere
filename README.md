@@ -1,10 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Setup:
+1. Pull OSRM image via docker `docker pull osrm/osrm-backend`
+2. Make a new folder in the root named `osrm-data`
+3. Download the latest `osm.pbf` of a country you want from [here](https://download.geofabrik.de/) and move it into the osrm-data folder.
 
-## Getting Started
+Run this in powershell to stop it from blocking local scripts (if necessary): 
+```
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
 
-First, run the development server:
+Then, run the scripts in powershell:
+```
+.\docker\osrm-start.ps1
 
-```bash
+.\docker\osrm-build.ps1
+```
+
+Optional but you can try opening this in your browser to make sure everything's 👍
+`http://localhost:5000/route/v1/driving/LONG1,LAT1;LONG2,LAT2?overview=false`
+
+Replace `LONG1,LAT1` and `LONG2,LAT2` with your coordinates.
+
+Finally, run the development server:
+```
 npm run dev
 # or
 yarn dev
@@ -13,24 +30,3 @@ pnpm dev
 # or
 bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
