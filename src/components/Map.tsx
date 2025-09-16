@@ -15,11 +15,6 @@ export default function Map() {
             L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
                 attribution: '&copy; OpenStreetMap contributors',
             }).addTo(map);
-
-            L.marker([-6.1754, 106.8272])
-                .addTo(map)
-                .bindPopup("Monas, Jakarta")
-                .openPopup();
         }
     }, []);
 
